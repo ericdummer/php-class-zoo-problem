@@ -4,6 +4,11 @@ require_once "Interfaces/ZooKeeper.php";
 
 class Keeper implements ZooKeeper {
 
+    /**
+     * Don't overthink this
+     * @param array $animals
+     * @return array
+     */
     public function feedAnimals(array $animals): array
     {
         /** @var Animal $animal */
@@ -13,6 +18,10 @@ class Keeper implements ZooKeeper {
         return $animals;
     }
 
+    /**
+     * @param array $animals
+     * @return array
+     */
     public function herdAnimals(array $animals): array
     {
         /** @var Animal $animal */

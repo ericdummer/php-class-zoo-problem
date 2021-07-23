@@ -3,11 +3,16 @@
 abstract class Animal {
 
     public $name;
-    public $habitat;
     public $isFed = false;
+    public $habitat;
     private $hasEscaped = false;
     private $canPlay = true;
 
+    /**
+     * Animal constructor. Name and the current habitat it resides in.
+     * @param $name
+     * @param $habitat
+     */
     public function __construct($name, $habitat) {
         $this->name = $name;
         $this->moveToHabitat($habitat)
@@ -15,6 +20,8 @@ abstract class Animal {
     }
 
     /**
+     * Change the habitat
+     * Also an example of chaining method calls. That's what the return $this is for
      * @param $habitat
      * @return $this
      */
@@ -24,6 +31,8 @@ abstract class Animal {
     }
 
     /**
+     * Changes is feed to true
+     * Also an example of chaining method calls. That's what the return $this is for
      * @return $this
      */
     final public function feed(): Animal {
@@ -31,11 +40,16 @@ abstract class Animal {
        return $this;
     }
 
+    /**
+     * Access isFed
+     * @return bool
+     */
     final public function isHungry(): bool {
         return !$this->isFed;
     }
 
     /**
+     * Test if the animal is fed, like their habitat, and can play in it
      * @return bool
      */
     final public function isHappy(): bool {
@@ -43,6 +57,7 @@ abstract class Animal {
     }
 
     /**
+     * Called by Zoo->processDay()
      * @return $this
      */
     final public function tryToEscape() {
@@ -60,6 +75,9 @@ abstract class Animal {
     }
 
     /**
+     * This is call when we want to know what type of animal it is.
+     * It should be a human readable
+     * It does not have to conform to PHP class name restrictions. i.e Blue Moose or Peregrine Falcon
      * @TODO override with a better name. Or your nephew not know what type of animal the child class is
      * @return string
      */
@@ -70,6 +88,9 @@ abstract class Animal {
 
 
     /**
+     * Should return a sentence (without punctuation) of the animal playing in the habitat
+     * Something like: "{$this->name} flutters his wings"
+     * or: "{$this->name} runs around the enclosure"
      * @TODO override with a better action and don't include the canPlay or you nephew not see a happy animal
      * @return String
      */
@@ -80,6 +101,7 @@ abstract class Animal {
 
 
     /**
+     * Dont overthink this one.
      * @TODO override with a correct implementation. You can't just return true!!!
      * @param $habitat
      * @return bool
