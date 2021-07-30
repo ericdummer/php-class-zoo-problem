@@ -50,7 +50,7 @@ echo "You made the rounds and attempted to herd the animals and replenish their 
 $zoo->careForAnimals($zooKeeper);
 echo "Your brother brings his son $nephewName for a tour of the zoo.\n";
 $brotherIsHappy = $zoo->goOnTour($nephewName);
-$brotherIsHappy = $brotherIsHappy && Zoo::validateAnimals($nephewName, $animals);
+$brotherIsHappy = Zoo::validateAnimals($nephewName, $animals) && $brotherIsHappy;
 if (!$brotherIsHappy) {
     echo "The tour was a disappointment. ";
     echo "$nephewName is not happy. Your brother is not happy. You lose your zoo!\n";
