@@ -17,6 +17,12 @@ class Zoo
         $this->animals = $animals;
     }
 
+    static protected function animalLikesHabitat(Animal $animal, $habitat) {
+        $reflectionMethod = new ReflectionMethod(get_class($animal), 'likesHabitat');
+        $reflectionMethod->setAccessible(true);
+        return $reflectionMethod->invoke($animal, $habitat);
+    }
+
     /**
      * @param $nephewName
      * @param $animals
@@ -29,17 +35,18 @@ class Zoo
         $foundLikesPool = 0;
         $brotherIsHappy = true;
 
+        /** @var Animal $animal */
         foreach ($animals as $animal) {
 
-            if ($animal->habitat == self::HABITAT_ENCLOSURE) {
+            if (self::animalLikesHabitat($animal, self::HABITAT_ENCLOSURE)) {
                 $foundLikesEnclosure++;
             }
 
-            if ($animal->habitat == self::HABITAT_CAGE) {
+            if (self::animalLikesHabitat($animal, self::HABITAT_CAGE)) {
                 $foundLikesCage++;
             }
 
-            if ($animal->habitat == self::HABITAT_POOL) {
+            if (self::animalLikesHabitat($animal, self::HABITAT_POOL)) {
                 $foundLikesPool++;
             }
         }

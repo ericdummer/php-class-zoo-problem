@@ -3,8 +3,8 @@
 abstract class Animal {
 
     public $name;
-    public $isFed = false;
-    public $habitat;
+    private $isFed = false;
+    private $habitat;
     private $hasEscaped = false;
     private $canPlay = true;
 

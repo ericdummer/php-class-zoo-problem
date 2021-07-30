@@ -30,7 +30,7 @@ class Saboteur implements ZooKeeper {
 
         /** @var Animal $animal */
         foreach($animals as $animal) {
-            $animal->isFed = false;
+            $this->hackMakeHungry($animal);
         }
         return $animals;
     }
@@ -47,9 +47,21 @@ class Saboteur implements ZooKeeper {
 
         /** @var Animal $animal */
         foreach($animals as $animal) {
-            $animal->moveToHabitat($this->randomHabitat($animal->habitat));
+            $animal->moveToHabitat($this->randomHabitat($this->hackWhichHabitat($animal)));
         }
         return $animals;
+    }
+
+    private function hackMakeHungry(Animal $animal) {
+        $property = new ReflectionProperty("Animal", "isFed");
+        $property->setAccessible(true);
+        $property->setValue($animal, false);
+    }
+
+    private function hackWhichHabitat(Animal $animal): string {
+        $property = new ReflectionProperty("Animal", "habitat");
+        $property->setAccessible(true);
+        return $property->getValue($animal);
     }
 
     /**
