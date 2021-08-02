@@ -53,8 +53,8 @@ class Saboteur implements ZooKeeper {
     }
 
     /**
-     *  Uses reflection to update the isFed attribute to false
-     * I felt it appropriate to use hack since the Saboteur is doing something nefarious
+     * Uses reflection to update the isFed attribute to false
+     * I felt it appropriate to use a hack since the Saboteur is doing something nefarious
      * @param Animal $animal
      */
     private function hackMakeHungry(Animal $animal) {
@@ -65,7 +65,7 @@ class Saboteur implements ZooKeeper {
 
     /**
      * Uses reflection to update the read the habitat property
-     * I felt it appropriate to use hack since the Saboteur is doing something nefarious
+     * I felt it appropriate to use a hack since the Saboteur is doing something nefarious
      * @param Animal $animal
      * @return string
      */
