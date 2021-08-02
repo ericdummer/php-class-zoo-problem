@@ -12,3 +12,11 @@ vagratn ssh
 cd /zoo-problem
 php testZoo.php
 ```
+## Assignment Instructions
+1. Implement the ZooKeeper interface in a new class and complete all the required methods. Call the class “Keeper” and put the file in the root of the project.
+2. Extend the abstract class Animal three times. Once for each habitat type. Put these class files in the “animals” folder.
+3. In the file testZoo.php, include (require_once) all files you created at the top of the file.
+4. Add an instance of each of you animals to the `$animals` array
+5. Replace `$zooKeeper = new stdClass();` with `$zooKeeper = new Keeper();`
+6. In all of your new classes, complete the bodies of the abstract and interface defined methods.
+7. To satisfy Timmy, look for concrete methods in the Animal class that need to be overridden in each child classes.  
