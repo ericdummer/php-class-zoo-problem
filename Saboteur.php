@@ -52,12 +52,23 @@ class Saboteur implements ZooKeeper {
         return $animals;
     }
 
+    /**
+     *  Uses reflection to update the isFed attribute to false
+     * I felt it appropriate to use hack since the Saboteur is doing something nefarious
+     * @param Animal $animal
+     */
     private function hackMakeHungry(Animal $animal) {
         $property = new ReflectionProperty("Animal", "isFed");
         $property->setAccessible(true);
         $property->setValue($animal, false);
     }
 
+    /**
+     * Uses reflection to update the read the habitat property
+     * I felt it appropriate to use hack since the Saboteur is doing something nefarious
+     * @param Animal $animal
+     * @return string
+     */
     private function hackWhichHabitat(Animal $animal): string {
         $property = new ReflectionProperty("Animal", "habitat");
         $property->setAccessible(true);
